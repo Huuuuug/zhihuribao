@@ -8,16 +8,17 @@ import PropTypes from "prop-types";
 const NewsItem = function (props) {
   const { info } = props;
   if (!info) return null;
-  const { images } = info;
+  let { images, image, hint } = info;
+  if (!images) images = [image];
   if (!Array.isArray(images)) images = [""];
   return (
     <div className="news-item-wrapper">
       <Link to={{ pathname: `/detail/${info.id}` }}>
         <div className="content">
           <h4 className="title">{info.title}</h4>
-          <p className="author">{info.hint}</p>
+          {hint ? <p className="author">{hint}</p> : null}
         </div>
-        <Image src={info.images[0]} lazy />
+        <Image src={images[0]} lazy />
       </Link>
     </div>
   );

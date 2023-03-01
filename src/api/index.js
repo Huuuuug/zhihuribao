@@ -68,6 +68,7 @@ const storeList = () => request.get("/api/store_list");
 const upload = (file) => {
   let fm = new FormData();
   fm.append("file", file);
+  console.log(fm);
   return request.post("/api/upload", fm);
 };
 
@@ -90,6 +91,8 @@ const api = {
   store,
   storeRemove,
   storeList,
+  upload,
+  userUpdate,
 };
 
 export default api;
